@@ -1,0 +1,4 @@
+.env
+/.env
+/pipfile.lock
+pipfile.lock
