@@ -34,19 +34,23 @@ def your_url():
         if 'url' in request.form.keys():
             urls[request.form['code']] = {'url': request.form['url']}
         elif 'file' in request.files.keys():
-            if 'file' not in request.files: 
+            if 'file' not in request.files:
                 flash('No file found...')
+
             file = request.files.get('file')
 
             if file.filename == '':
                 flash('No selected file')
                 return redirect('home')
+            
+            print(request, 'what is this request')
 
             full_name = request.form['code'] + file.filename
 
             if file and full_name: 
                 file_name = secure_filename(full_name)
-                file.save('/Users/samsan/Desktop/Coding/Flask Training/Flask/images/' + file_name)
+                file.save('/Users/samsan/Desktop/Coding/Flask Training/Flask/static/user_files/' + file_name)
+                urls[request.form['code']] = {'file': full_name}
 
         with open('urls.json', 'w') as url_file:
             json.dump(urls, url_file)
@@ -62,5 +66,5 @@ def url_redirect(code):
             if code in deserialized.keys():
                 if 'url' in deserialized[code].keys():
                     return redirect(deserialized[code]['url'])
-            flash('Not found')
-            return redirect(url_for('home'))
+                else: 
+                    url_for('static', filename='user_files/' + deserialized[code]['file'])
