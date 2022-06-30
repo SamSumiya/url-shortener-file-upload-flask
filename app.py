@@ -60,6 +60,7 @@ def url_redirect(code):
         with open('urls.json') as json_file:
             deserialized = json.load(json_file)
             if code in deserialized.keys():
-                return deserialized[code]['url']
+                if 'url' in deserialized[code].keys():
+                    return redirect(deserialized[code]['url'])
             flash('Not found')
             return redirect(url_for('home'))
