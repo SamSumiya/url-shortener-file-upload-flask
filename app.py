@@ -46,11 +46,20 @@ def your_url():
 
             if file and full_name: 
                 file_name = secure_filename(full_name)
-                file.save('/Users/samsan/Desktop/Coding/Flask Training/Flask/' + file_name)
-                urls[request.form['code']] = {'file': file_name}
+                file.save('/Users/samsan/Desktop/Coding/Flask Training/Flask/images/' + file_name)
 
         with open('urls.json', 'w') as url_file:
             json.dump(urls, url_file)
             flash('Your have successfully stord an url!!')
         return render_template('your_url.html', code=request.form['code'])
     return redirect(url_for('home'))
+
+@app.route('/<string:code>')
+def url_redirect(code): 
+    if os.path.exists('urls.json'):
+        with open('urls.json') as json_file:
+            deserialized = json.load(json_file)
+            if code in deserialized.keys():
+                return deserialized[code]['url']
+            flash('Not found')
+            return redirect(url_for('home'))

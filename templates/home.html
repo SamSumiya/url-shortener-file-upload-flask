@@ -14,7 +14,9 @@
     <input type="submit" value="Shorten">
 </form>
 
-
+{% for message in get_flashed_messages() %}
+    <h2>{{ message }}</h2>
+{% endfor %}
 <form action="/your-url" method="post" enctype="multipart/form-data">
     <label for="file">File</label>
         <input type="file" name="file" value="">
