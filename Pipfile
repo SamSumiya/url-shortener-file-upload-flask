@@ -7,6 +7,8 @@ name = "pypi"
 pytest = "*"
 flask = "*"
 python-dotenv = "*"
+datetime = "*"
+
 
 [dev-packages]
 
