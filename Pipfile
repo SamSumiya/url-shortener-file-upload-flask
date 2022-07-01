@@ -9,6 +9,7 @@ flask = "*"
 python-dotenv = "*"
 datetime = "*"
 gunicorn = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
