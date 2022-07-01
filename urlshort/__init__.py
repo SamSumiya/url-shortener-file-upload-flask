@@ -1,4 +1,4 @@
-from .urlshort import urlshort
+from urlshort import urlshort
 from flask import Flask
 import os
 

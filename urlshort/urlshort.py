@@ -22,7 +22,7 @@ def home():
 def your_url():
     if request.method == 'POST':
         urls = {}
-
+        
         if os.path.exists('urls.json'):
             with open('urls.json') as urls_file:
                 urls = json.load(urls_file)
@@ -39,16 +39,15 @@ def your_url():
 
             file = request.files.get('file')
 
-            if file.filename == '' or None:
+            if file.filename == '':
                 flash('No selected file')
                 return redirect(url_for('urlshort.home'))
 
-            full_name = request.form['code'] + file.filename
+            full_name = request.form['code'] + secure_filename(file.filename)
 
             if file and full_name:
-                file_name = secure_filename(full_name)
                 file.save(
-                    '/Users/samsan/Desktop/Coding/Flask Training/Flask/urlshort/static' + file_name)
+                    '/Users/samsan/Desktop/Coding/Flask Training/Flask/urlshort/static/user_files/' + full_name)
                 urls[request.form['code']] = {'file': full_name}
 
         with open('urls.json', 'w') as url_file:
@@ -56,7 +55,8 @@ def your_url():
             session[request.form['code']] = True
             flash('Your have successfully stord an url!!')
         return render_template('your_url.html', code=request.form['code'])
-    return redirect(url_for('urlshort.home'))
+    else:
+        return redirect(url_for('urlshort.home'))
 
 
 @bp.route('/<string:code>')
