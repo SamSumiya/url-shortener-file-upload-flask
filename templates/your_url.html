@@ -1,5 +1,13 @@
-{% for message in get_flashed_messages() %}
+{% extends 'base.html' %}
+
+{% block title %}
+    URL for "{{code}}"
+{% endblock %}
+
+{% block main %}
+<!-- {% for message in get_flashed_messages() %}
     {{ message }}
-{% endfor %} 
+{% endfor %}  -->
 <h1>Your URL</h1>
 <h2>{{code}}</h2>
+{% endblock%}
