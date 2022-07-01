@@ -10,6 +10,7 @@ python-dotenv = "*"
 datetime = "*"
 gunicorn = "*"
 psycopg2 = "*"
+flask-session = "*"
 
 [dev-packages]
 
