@@ -22,7 +22,7 @@ def home():
 def your_url():
     if request.method == 'POST':
         urls = {}
-        
+
         if os.path.exists('urls.json'):
             with open('urls.json') as urls_file:
                 urls = json.load(urls_file)
@@ -48,6 +48,7 @@ def your_url():
             if file and full_name:
                 file.save(
                     '/Users/samsan/Desktop/Coding/Flask Training/Flask/urlshort/static/user_files/' + full_name)
+
                 urls[request.form['code']] = {'file': full_name}
 
         with open('urls.json', 'w') as url_file:
@@ -57,6 +58,7 @@ def your_url():
         return render_template('your_url.html', code=request.form['code'])
     else:
         return redirect(url_for('urlshort.home'))
+
 
 
 @bp.route('/<string:code>')
