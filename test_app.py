@@ -1,5 +1,5 @@
-import pytest
-from urlshort import create_app 
+
+# from urlshort import create_app 
 
 
 def test_shorten(client):
