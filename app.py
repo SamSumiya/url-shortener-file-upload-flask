@@ -43,8 +43,6 @@ def your_url():
                 flash('No selected file')
                 return redirect(url_for('home'))
 
-            print(request, 'what is this request')
-
             full_name = request.form['code'] + file.filename
 
             if file and full_name:
@@ -54,7 +52,7 @@ def your_url():
                 urls[request.form['code']] = {'file': full_name}
 
         with open('urls.json', 'w') as url_file:
-            json.dump(urls, url_file)
+            deserialized = json.dump(urls, url_file)
             session[request.form['code']] = True
             flash('Your have successfully stord an url!!')
         return render_template('your_url.html', code=request.form['code'])
@@ -67,7 +65,6 @@ def url_redirect(code):
 
         with open('urls.json') as json_file:
             deserialized = json.load(json_file)
-            print(deserialized, 'waht is this deserailzied hgung')
 
             if code in deserialized.keys():
                 if 'url' in deserialized[code].keys():

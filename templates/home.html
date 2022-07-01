@@ -25,7 +25,8 @@
 </form>
 
 {% if codes %}
-<h2>Codes your have created</h2>
+{{ (codes) }}
+<h2>URLs your have created</h2>
 <ul>
     {% for code in codes %}
     <a href="{{ url_for('url_redirect', code=code) }}">
