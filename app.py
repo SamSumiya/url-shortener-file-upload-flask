@@ -1,6 +1,6 @@
 import json
 import os
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 
@@ -73,3 +73,5 @@ def url_redirect(code):
                     return redirect(deserialized[code]['url'])
                 else:
                     return redirect(url_for('static', filename='user_files/' + deserialized[code]['file']))
+
+    return abort(404)
