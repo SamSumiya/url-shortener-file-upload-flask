@@ -1,4 +1,4 @@
-from urlshort import urlshort
+from urlshort import app
 from flask import Flask
 import os
 
@@ -10,6 +10,6 @@ def create_app(test_config=None):
     env_var = os.environ.get('TEST_ENV_VAR')
     app.secret_key = env_var
 
-    app.register_blueprint(urlshort.bp)
+    app.register_blueprint(app.bp)
 
     return app

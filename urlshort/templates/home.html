@@ -43,7 +43,7 @@
 <h2>URLs your have created</h2>
 <ul>
     {% for code in codes %}
-    <a href="{{ url_for('urlshort.url_redirect', code=code) }}">
+    <a href="{{ url_for('app.url_redirect', code=code) }}">
         <li>{{code}}</li> 
     </a>
     {% endfor %}
