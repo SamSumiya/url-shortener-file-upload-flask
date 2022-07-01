@@ -1,2 +1,2 @@
-web: gunicorn app:urlshort
+web: gunicorn site:urlshort
 
