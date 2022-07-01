@@ -1,1 +1,23 @@
-{"go": {"url": "https://google.com"}, "net": {"url": "https://netflix.com"}, "fb": {"url": "https://meta.com"}, "az": {"url": "https://amazon.com"}, "ms": {"url": "https://microsoft.com"}, "sfc": {"file": "sfcxLhDapL.jpeg"}, "nyc": {"file": "nycwp3594935.jpeg"}}
+{
+    "go": {
+        "url": "https://google.com"
+    },
+    "net": {
+        "url": "https://netflix.com"
+    },
+    "fb": {
+        "url": "https://meta.com"
+    },
+    "az": {
+        "url": "https://amazon.com"
+    },
+    "ms": {
+        "url": "https://microsoft.com"
+    },
+    "sfc": {
+        "file": "sfcxLhDapL.jpeg"
+    },
+    "nyc": {
+        "file": "nycwp3594935.jpeg"
+    }
+}

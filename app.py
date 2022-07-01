@@ -42,14 +42,15 @@ def your_url():
             if file.filename == '' or None:
                 flash('No selected file')
                 return redirect(url_for('home'))
-            
+
             print(request, 'what is this request')
 
             full_name = request.form['code'] + file.filename
 
-            if file and full_name: 
+            if file and full_name:
                 file_name = secure_filename(full_name)
-                file.save('/Users/samsan/Desktop/Coding/Flask Training/Flask/static/user_files/' + file_name)
+                file.save(
+                    '/Users/samsan/Desktop/Coding/Flask Training/Flask/static/user_files/' + file_name)
                 urls[request.form['code']] = {'file': full_name}
 
         with open('urls.json', 'w') as url_file:
@@ -58,6 +59,7 @@ def your_url():
         return render_template('your_url.html', code=request.form['code'])
     return redirect(url_for('home'))
 
+
 @app.route('/<string:code>')
 def url_redirect(code):
     if os.path.exists('urls.json'):
@@ -65,7 +67,7 @@ def url_redirect(code):
         with open('urls.json') as json_file:
             deserialized = json.load(json_file)
             print(deserialized, 'waht is this deserailzied hgung')
-           
+
             if code in deserialized.keys():
                 if 'url' in deserialized[code].keys():
                     return redirect(deserialized[code]['url'])
