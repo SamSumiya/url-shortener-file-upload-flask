@@ -1,2 +1,2 @@
-web: gunicorn site:urlshort
+web: gunicorn wsgi:urlshort
 
