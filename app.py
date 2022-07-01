@@ -39,9 +39,9 @@ def your_url():
 
             file = request.files.get('file')
 
-            if file.filename == '':
+            if file.filename == '' or None:
                 flash('No selected file')
-                return redirect('home')
+                return redirect(url_for('home'))
             
             print(request, 'what is this request')
 
@@ -59,12 +59,15 @@ def your_url():
     return redirect(url_for('home'))
 
 @app.route('/<string:code>')
-def url_redirect(code): 
+def url_redirect(code):
     if os.path.exists('urls.json'):
+
         with open('urls.json') as json_file:
             deserialized = json.load(json_file)
+            print(deserialized, 'waht is this deserailzied hgung')
+           
             if code in deserialized.keys():
                 if 'url' in deserialized[code].keys():
                     return redirect(deserialized[code]['url'])
-                else: 
-                    url_for('static', filename='user_files/' + deserialized[code]['file'])
+                else:
+                    return redirect(url_for('static', filename='user_files/' + deserialized[code]['file']))
