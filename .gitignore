@@ -2,3 +2,4 @@
 /.env
 /pipfile.lock
 pipfile.lock
+.vscode
