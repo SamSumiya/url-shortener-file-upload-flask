@@ -8,14 +8,13 @@
 
 <h1>URL Shortener</h1>
 
-<<<<<<< HEAD:urlshort/templates/home.html
-=======
+
 {% for message in get_flashed_messages() %}
 
 <h2>{{ message }}</h2>
 
 {% endfor %}
->>>>>>> 26b83e9066edd63a67fd72a646bec015dcfea318:templates/home.html
+
 
 <form action="/your-url" method="post">
     <label for="url">Website URL</label>
@@ -48,28 +47,6 @@
     {% endfor %}
 </ul>
 {% endif %}
-<<<<<<< HEAD:urlshort/templates/home.html
 
 {% endblock%}
-=======
-        <input type="url" name="url" value="" required>
-        <br>
-    <label for="url">Shor Name URL</label>
-        <input type="text" name="code" value="" required>
-        <br>
-    <input type="submit" value="Shorten">
-</form>
 
-{% for message in get_flashed_messages() %}
-    <h2>{{ message }}</h2>
-{% endfor %}
-<form action="/your-url" method="post" enctype="multipart/form-data">
-    <label for="file">File</label>
-        <input type="file" name="file" value="">
-        <br>
-    <label for="url">Shor Name URL</label>
-        <input type="text" name="code" value="">
-        <br>
-    <input type="submit" value="Shorten File">
-</form>
->>>>>>> 26b83e9066edd63a67fd72a646bec015dcfea318:templates/home.html
